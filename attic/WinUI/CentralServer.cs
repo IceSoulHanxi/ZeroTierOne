@@ -11,7 +11,7 @@ namespace WinUI
     {
         public CentralServer()
         {
-            ServerURL = "https://my.zerotier.com";
+            ServerURL = "https://baidu.com";
         }
 
         [JsonProperty("server_url")]

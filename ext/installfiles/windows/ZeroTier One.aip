@@ -127,10 +127,10 @@
     <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="ZeroTier One" DescriptionUrl="https://www.zerotier.com/" SignOptions="7" SignTool="5" UseSha256="1" KVTenantId="5300bf3b-0eff-4a5f-a63f-821e22ed1730" KVAppId="5f94d77e-b795-41fd-afe7-ec913b03c1d3" KVName="ZeroTier-CS" KVCertName="ZT-EV-CS-2024" KVCertVersion="64807be24d57468e895e2e577f430de2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FirewallExceptionComponent">
-    <ROW FirewallException="ZeroTierOneUDP9993" Direction="1" Action="1" DisplayName="ZeroTier UDP/9993 In" GroupName="ZeroTierOne" Enabled="1" Scope="*" Condition="1" Profiles="7" Port="9993" Protocol="UDP"/>
-    <ROW FirewallException="ZeroTierOnex64Binary" Direction="1" Action="1" DisplayName="ZeroTier x64 Binary In" GroupName="ZeroTierOne" Enabled="1" Scope="*" Condition="((?zerotierone_x64.exe=2) AND ($zerotierone_x64.exe=3))" Profiles="7" AppPath="[#zerotierone_x64.exe]" Port="*" Protocol="ANY"/>
-    <ROW FirewallException="ZeroTierOnex86Binary" Direction="1" Action="1" DisplayName="ZeroTier x86 Binary In" GroupName="ZeroTierOne" Enabled="1" Scope="*" Condition="((?zerotierone_x86.exe=2) AND ($zerotierone_x86.exe=3))" Profiles="7" AppPath="[#zerotierone_x86.exe]" Port="*" Protocol="ANY"/>
-    <ROW FirewallException="ZeroTierUDP9993Out" Direction="2" Action="1" DisplayName="ZeroTier UDP/9993 Out" GroupName="ZeroTierOne" Enabled="1" Scope="*" Condition="1" Profiles="7" Port="9993" Protocol="UDP"/>
+    <ROW FirewallException="ZTOUDP9443" Direction="1" Action="1" DisplayName="ZT UDP/9443 In" GroupName="ZTO" Enabled="1" Scope="*" Condition="1" Profiles="7" Port="9443" Protocol="UDP"/>
+    <ROW FirewallException="ZTOx64Binary" Direction="1" Action="1" DisplayName="ZT x64 Binary In" GroupName="ZTO" Enabled="1" Scope="*" Condition="((?zerotierone_x64.exe=2) AND ($zerotierone_x64.exe=3))" Profiles="7" AppPath="[#zerotierone_x64.exe]" Port="*" Protocol="ANY"/>
+    <ROW FirewallException="ZTOx86Binary" Direction="1" Action="1" DisplayName="ZT x86 Binary In" GroupName="ZTO" Enabled="1" Scope="*" Condition="((?zerotierone_x86.exe=2) AND ($zerotierone_x86.exe=3))" Profiles="7" AppPath="[#zerotierone_x86.exe]" Port="*" Protocol="ANY"/>
+    <ROW FirewallException="ZTOUDP9443Out" Direction="2" Action="1" DisplayName="ZT UDP/9443 Out" GroupName="ZTO" Enabled="1" Scope="*" Condition="1" Profiles="7" Port="9443" Protocol="UDP"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>

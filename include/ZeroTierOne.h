@@ -69,7 +69,7 @@ extern "C" {
 /**
  * Default UDP port for devices running a ZeroTier endpoint
  */
-#define ZT_DEFAULT_PORT 9993
+#define ZT_DEFAULT_PORT 9443
 
 /**
  * Minimum MTU, which is the minimum allowed by IPv6 and several specs

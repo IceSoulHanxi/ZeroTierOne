@@ -277,7 +277,7 @@ pub extern "C" fn zeroidc_get_url_param_value(param: *const c_char, path: *const
     let param = unsafe { CStr::from_ptr(param) }.to_str().unwrap();
     let path = unsafe { CStr::from_ptr(path) }.to_str().unwrap();
 
-    let url = "http://localhost:9993".to_string() + path;
+    let url = "http://localhost:9443".to_string() + path;
     let url = Url::parse(&url).unwrap();
 
     let pairs = url.query_pairs();

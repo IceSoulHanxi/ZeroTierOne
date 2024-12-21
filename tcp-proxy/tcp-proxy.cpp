@@ -239,7 +239,7 @@ struct TcpProxyService
 							// these.
 							dest.sin_family = AF_INET;
 							dest.sin_addr.s_addr = htonl(0x7f000001); // 127.0.0.1
-							dest.sin_port = htons(9993);
+							dest.sin_port = htons(9443);
 						}
 
 						// Note: we do not relay to privileged ports... just an abuse prevention rule.

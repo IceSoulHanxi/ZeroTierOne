@@ -283,7 +283,7 @@ class NetworkState
 {
 public:
 	NetworkState()
-		: _webPort(9993)
+		: _webPort(9443)
 		, _tap((EthernetTap *)0)
 #if ZT_SSO_ENABLED
 		, _idc(nullptr)
@@ -1119,7 +1119,7 @@ public:
 
 				if (_ports[2]) {
 					char uniqueName[64];
-					OSUtils::ztsnprintf(uniqueName,sizeof(uniqueName),"ZeroTier/%.10llx@%u",_node->address(),_ports[2]);
+					OSUtils::ztsnprintf(uniqueName,sizeof(uniqueName),"Oray/%.10llx@%u",_node->address(),_ports[2]);
 					_portMapper = new PortMapper(_ports[2],uniqueName);
 				}
 			}
@@ -2625,19 +2625,19 @@ public:
 #endif
 
 #ifndef ZT_SDK
-		const std::string up(OSUtils::jsonString(settings["softwareUpdate"],ZT_SOFTWARE_UPDATE_DEFAULT));
-		const bool udist = OSUtils::jsonBool(settings["softwareUpdateDist"],false);
-		if (((up == "apply")||(up == "download"))||(udist)) {
-			if (!_updater)
-				_updater = new SoftwareUpdater(*_node,_homePath);
-			_updateAutoApply = (up == "apply");
-			_updater->setUpdateDistribution(udist);
-			_updater->setChannel(OSUtils::jsonString(settings["softwareUpdateChannel"],ZT_SOFTWARE_UPDATE_DEFAULT_CHANNEL));
-		} else {
-			delete _updater;
-			_updater = (SoftwareUpdater *)0;
-			_updateAutoApply = false;
-		}
+		// const std::string up(OSUtils::jsonString(settings["softwareUpdate"],ZT_SOFTWARE_UPDATE_DEFAULT));
+		// const bool udist = OSUtils::jsonBool(settings["softwareUpdateDist"],false);
+		// if (((up == "apply")||(up == "download"))||(udist)) {
+		// 	if (!_updater)
+		// 		_updater = new SoftwareUpdater(*_node,_homePath);
+		// 	_updateAutoApply = (up == "apply");
+		// 	_updater->setUpdateDistribution(udist);
+		// 	_updater->setChannel(OSUtils::jsonString(settings["softwareUpdateChannel"],ZT_SOFTWARE_UPDATE_DEFAULT_CHANNEL));
+		// } else {
+		// 	delete _updater;
+		// 	_updater = (SoftwareUpdater *)0;
+		// 	_updateAutoApply = false;
+		// }
 #endif
 
 		json &ignoreIfs = settings["interfacePrefixBlacklist"];

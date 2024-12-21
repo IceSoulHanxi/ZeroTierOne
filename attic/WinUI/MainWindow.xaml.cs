@@ -81,14 +81,14 @@ namespace WinUI
 
         private Int32 readPort(String path)
         {
-            Int32 port = 9993;
+            Int32 port = 9443;
 
             try
             {
                 byte[] tmp = File.ReadAllBytes(path);
                 port = Int32.Parse(System.Text.Encoding.ASCII.GetString(tmp).Trim());
                 if ((port <= 0) || (port > 65535))
-                    port = 9993;
+                    port = 9443;
             }
             catch
             {
@@ -103,7 +103,7 @@ namespace WinUI
             String globalZtDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\ZeroTier\\One";
 
             String authToken = "";
-            Int32 port = 9993;
+            Int32 port = 9443;
 
             if (!File.Exists(localZtDir + "\\authtoken.secret") || !File.Exists(localZtDir + "\\zerotier-one.port"))
             {
