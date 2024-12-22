@@ -119,7 +119,7 @@ ifeq ($(CC_MACH),x86_64)
 	ZT_USE_X64_ASM_ED25519=1
 	override CFLAGS+=-msse -msse2
 	override CXXFLAGS+=-msse -msse2
-	ZT_SSO_SUPPORTED=1
+	ZT_SSO_SUPPORTED=0
 	ifeq ($(ZT_CONTROLLER),1)
 		EXT_ARCH=amd64
 	endif
@@ -130,7 +130,7 @@ ifeq ($(CC_MACH),amd64)
 	ZT_USE_X64_ASM_ED25519=1
 	override CFLAGS+=-msse -msse2
 	override CXXFLAGS+=-msse -msse2
-	ZT_SSO_SUPPORTED=1
+	ZT_SSO_SUPPORTED=0
 	ifeq ($(ZT_CONTROLLER),1)
 		EXT_ARCH=amd64
 	endif
@@ -158,19 +158,19 @@ ifeq ($(CC_MACH),e2k64)
 endif
 ifeq ($(CC_MACH),i386)
 	ZT_ARCHITECTURE=1
-	ZT_SSO_SUPPORTED=1
+	ZT_SSO_SUPPORTED=0
 endif
 ifeq ($(CC_MACH),i486)
 	ZT_ARCHITECTURE=1
-	ZT_SSO_SUPPORTED=1
+	ZT_SSO_SUPPORTED=0
 endif
 ifeq ($(CC_MACH),i586)
 	ZT_ARCHITECTURE=1
-	ZT_SSO_SUPPORTED=1
+	ZT_SSO_SUPPORTED=0
 endif
 ifeq ($(CC_MACH),i686)
 	ZT_ARCHITECTURE=1
-	ZT_SSO_SUPPORTED=1
+	ZT_SSO_SUPPORTED=0
 endif
 ifeq ($(CC_MACH),arm)
 	ZT_ARCHITECTURE=3
@@ -186,7 +186,7 @@ ifeq ($(CC_MACH),armhf)
 	ZT_ARCHITECTURE=3
 	override DEFS+=-DZT_NO_TYPE_PUNNING
 	ZT_USE_ARM32_NEON_ASM_CRYPTO=1
-	ZT_SSO_SUPPORTED=1
+	ZT_SSO_SUPPORTED=0
 endif
 ifeq ($(CC_MACH),armv6)
 	ZT_ARCHITECTURE=3
@@ -235,13 +235,13 @@ ifeq ($(CC_MACH),armv7ve)
 endif
 ifeq ($(CC_MACH),arm64)
 	ZT_ARCHITECTURE=4
-	ZT_SSO_SUPPORTED=1
+	ZT_SSO_SUPPORTED=0
 	ZT_USE_X64_ASM_ED25519=0
 	override DEFS+=-DZT_NO_TYPE_PUNNING -DZT_ARCH_ARM_HAS_NEON -march=armv8-a+crypto -mtune=generic -mstrict-align
 endif
 ifeq ($(CC_MACH),aarch64)
 	ZT_ARCHITECTURE=4
-	ZT_SSO_SUPPORTED=1
+	ZT_SSO_SUPPORTED=0
 	ZT_USE_X64_ASM_ED25519=0
 	override DEFS+=-DZT_NO_TYPE_PUNNING -DZT_ARCH_ARM_HAS_NEON -march=armv8-a+crypto -mtune=generic -mstrict-align
 	ifeq ($(ZT_CONTROLLER),1)
@@ -294,7 +294,7 @@ endif
 
 ifeq ($(ZT_SSO_SUPPORTED), 1)
 	ifeq ($(ZT_EMBEDDED),)
-		override DEFS+=-DZT_SSO_SUPPORTED=1
+		override DEFS+=-DZT_SSO_SUPPORTED=0
 		ifeq ($(ZT_DEBUG),1)
 			LDLIBS+=rustybits/target/debug/libzeroidc.a -ldl -lssl -lcrypto
 		else
