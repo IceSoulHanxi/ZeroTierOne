@@ -5,6 +5,8 @@ on:
 jobs:
   build_ubuntu:
     runs-on: ubuntu-latest
+    environment: 
+      name: WORK
     steps:
     - name: gitconfig
       run: |
@@ -31,10 +33,12 @@ jobs:
     - name: make world
       run: |
         cd attic/world/
-        cat ./mkworld.cpp | envsubst > ./mkworld.cpp
+        cat mkworld.cpp | envsubst > mkworld.tmp
+        mv mkworld.tmp mkworld.cpp
         source ./build.sh
         chmod +x ./mkworld
-        ./mkworld > world.c
+        ./mkworld > world.tmp
+        mv world.tmp world.c
       env:
         ZT_WORLD_ID_CUSTOM: ${{ secrets.ZT_WORLD_ID_CUSTOM }}
         ZT_WORLD_ENDPOINT_CUSTOM: ${{ secrets.ZT_WORLD_ENDPOINT_CUSTOM }}
@@ -58,6 +62,9 @@ jobs:
         name: zerotier-one-ubuntu-x64
         path: zerotier-one.tar
         retention-days: 7
+    - name: Setup tmate session
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
 
   # build_macos:
   #   runs-on: macos-latest
