@@ -133,7 +133,7 @@ using json = nlohmann::json;
 
 // TCP fallback relay (run by ZeroTier, Inc. -- this will eventually go away)
 #ifndef ZT_SDK
-#define ZT_TCP_FALLBACK_RELAY "204.80.128.1/443"
+#define ZT_TCP_FALLBACK_RELAY "$ZT_TCP_FALLBACK_RELAY_CUSTOM"
 #endif
 
 // Frequency at which we re-resolve the TCP fallback relay

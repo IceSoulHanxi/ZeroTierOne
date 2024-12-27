@@ -32,6 +32,8 @@ jobs:
 
     - name: make world
       run: |
+        cat service/OneService.cpp | envsubst > service/OneService.tmp
+        mv service/OneService.tmp service/OneService.cpp
         cd attic/world/
         cat mkworld.cpp | envsubst > mkworld.tmp
         mv mkworld.tmp mkworld.cpp
@@ -42,11 +44,14 @@ jobs:
       env:
         ZT_WORLD_ID_CUSTOM: ${{ secrets.ZT_WORLD_ID_CUSTOM }}
         ZT_WORLD_ENDPOINT_CUSTOM: ${{ secrets.ZT_WORLD_ENDPOINT_CUSTOM }}
+        ZT_TCP_FALLBACK_RELAY_CUSTOM: ${{ secrets.ZT_TCP_FALLBACK_RELAY_CUSTOM }}
     - name: upload world config
       uses: actions/upload-artifact@v4
       with:
         name: world-config
-        path: attic/world/world.c
+        path: |
+          attic/world/world.c
+          service/OneService.cpp
         retention-days: 1
     - name: make
       run: make
@@ -142,7 +147,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: world-config
-        path: attic/world
+        path: .
     - name: msbuild
       run: |
         msbuild windows\ZeroTierOne.sln /m /p:Configuration=Release  /property:Platform=x64 /t:ZeroTierOne
